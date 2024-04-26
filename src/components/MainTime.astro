@@ -1,9 +1,10 @@
 ---
 const date: Date = new Date();
 const hour: string = date.getHours() < 10 ? `0${date.getHours()}` : `${date.getHours()}`;
+const minutes: string = date.getMinutes() < 10 ? `0${date.getMinutes()}` : `${date.getMinutes()}`;
 const seconds: string = date.getSeconds() < 10 ? `0${date.getSeconds()}` : `${date.getSeconds()}`;
 
-const time: string = `${hour}:${date.getMinutes()}:${seconds}`;
+const time: string = `${hour}:${minutes}:${seconds}`;
 
 const timeZone: string = Intl.DateTimeFormat().resolvedOptions().timeZone;
 ---
@@ -22,8 +23,9 @@ const timeZone: string = Intl.DateTimeFormat().resolvedOptions().timeZone;
         date = new Date();
 
         const hour: string = date.getHours() < 10 ? `0${date.getHours()}` : `${date.getHours()}`;
+        const minutes: string = date.getMinutes() < 10 ? `0${date.getMinutes()}` : `${date.getMinutes()}`;
         const seconds: string = date.getSeconds() < 10 ? `0${date.getSeconds()}` : `${date.getSeconds()}`;
-        document.querySelector('#main-hour').textContent = `${hour}:${date.getMinutes()}:${seconds}`;
+        document.querySelector('#main-hour').textContent = `${hour}:${minutes}:${seconds}`;
 
     }, 1000);
 

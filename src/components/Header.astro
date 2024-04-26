@@ -1,9 +1,14 @@
 ---
 import Screen from "./Icons/ScreenIcon.astro";
+import MoonIcon from "./Icons/MoonIcon.astro";
 ---
 <header class="container pt-5 flex items-center justify-end gap-5">
-    <button id="screen-full">
+    <button id="screen-full" class="text-mine-shaft-950 dark:text-white">
         <Screen/>
+    </button>
+
+    <button id="dark-mode" class="text-mine-shaft-950 dark:text-white">
+        <MoonIcon/>
     </button>
 </header>
 
@@ -22,5 +27,29 @@ import Screen from "./Icons/ScreenIcon.astro";
             }
         }
     }
+
+    // dark mode
+    const darkMode: HTMLElement = document.getElementById("dark-mode");
+    const body: HTMLElement = document.body;
+
+    darkMode.addEventListener("click", () => {
+        body.classList.toggle("dark");
+    });
+
+    // check if dark mode is enabled
+    if (localStorage.getItem("dark-mode") === "true") {
+        body.classList.add("dark");
+    }
+
+    // save dark mode state
+    darkMode.addEventListener("click", () => {
+        if (body.classList.contains("dark")) {
+            localStorage.setItem("dark-mode", "true");
+        } else {
+            localStorage.setItem("dark-mode", "false");
+        }
+    });
+
+
 
 </script>

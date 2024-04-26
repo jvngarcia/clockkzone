@@ -10,8 +10,10 @@ const {title, time} = Astro.props;
 ---
 <div class="flex justify-between items-center">
     <div class="flex flex-col">
-        <h2 class="text-xl text-mine-shaft-950">{title}</h2>
-        <p class="text-md text-mine-shaft-800">{time}</p>
+        <h2 class="text-xl text-mine-shaft-950 dark:text-white">{title}</h2>
+        <p class="text-md text-mine-shaft-800 dark:text-white">{time}</p>
     </div>
-    <VerticalDots/>
+    <div class="dark:text-white text-mine-shaft-950">
+        <VerticalDots/>
+    </div>
 </div>

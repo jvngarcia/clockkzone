@@ -1,0 +1,30 @@
+---
+const date: Date = new Date();
+const hour: string = date.getHours() < 10 ? `0${date.getHours()}` : `${date.getHours()}`;
+const seconds: string = date.getSeconds() < 10 ? `0${date.getSeconds()}` : `${date.getSeconds()}`;
+
+const time: string = `${hour}:${date.getMinutes()}:${seconds}`;
+
+const timeZone: string = Intl.DateTimeFormat().resolvedOptions().timeZone;
+---
+
+
+<div class="flex flex-col gap-2">
+    <h1 id="main-hour" class="text-5xl md:text-9xl font-bold text-center text-mine-shaft-950">{time}</h1>
+    <p id="main-timezone" class="text-center text-md md:text-lg text-mine-shaft-800">{timeZone}</p>
+</div>
+
+
+<script>
+    let date: Date = new Date();
+
+    setInterval((): void => {
+        date = new Date();
+
+        const hour: string = date.getHours() < 10 ? `0${date.getHours()}` : `${date.getHours()}`;
+        const seconds: string = date.getSeconds() < 10 ? `0${date.getSeconds()}` : `${date.getSeconds()}`;
+        document.querySelector('#main-hour').textContent = `${hour}:${date.getMinutes()}:${seconds}`;
+
+    }, 1000);
+
+</script>

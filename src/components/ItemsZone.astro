@@ -1,0 +1,17 @@
+---
+import VerticalDots from "./Icons/VerticalDots.astro";
+
+interface Props {
+    title: string;
+    time: string;
+}
+
+const {title, time} = Astro.props;
+---
+<div class="flex justify-between items-center">
+    <div class="flex flex-col">
+        <h2 class="text-xl text-mine-shaft-950">{title}</h2>
+        <p class="text-md text-mine-shaft-800">{time}</p>
+    </div>
+    <VerticalDots/>
+</div>

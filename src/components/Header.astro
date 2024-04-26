@@ -1,0 +1,26 @@
+---
+import Screen from "./Icons/Screen.astro";
+---
+<header class="container pt-5 flex items-center justify-end gap-5">
+    <button id="screen-full">
+        <Screen/>
+    </button>
+</header>
+
+
+<script>
+    const elem: HTMLElement = document.getElementById("screen-full");
+
+    elem.addEventListener("click", toggleFullScreen);
+
+    function toggleFullScreen(): void {
+        if (!document.fullscreenElement) {
+            document.documentElement.requestFullscreen();
+        } else {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
+        }
+    }
+
+</script>

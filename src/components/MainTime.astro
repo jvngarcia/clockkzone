@@ -1,5 +1,5 @@
 ---
-const date: Date = new Date();
+const date: Date = new Date("December 17, 2024 4:40:00");
 const hour: string = date.getHours() < 10 ? `0${date.getHours()}` : `${date.getHours()}`;
 const minutes: string = date.getMinutes() < 10 ? `0${date.getMinutes()}` : `${date.getMinutes()}`;
 const seconds: string = date.getSeconds() < 10 ? `0${date.getSeconds()}` : `${date.getSeconds()}`;
@@ -11,21 +11,24 @@ const timeZone: string = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
 
 <div class="flex flex-col gap-2">
-    <h1 id="main-hour" class="text-5xl md:text-9xl font-bold text-center text-mine-shaft-950 dark:text-white">{time}</h1>
+    <h1 id="main-hour" class="text-5xl md:text-9xl font-bold text-center text-mine-shaft-950 dark:text-white" data-date={date}>{time}</h1>
     <p id="main-timezone" class="text-center text-md md:text-lg text-mine-shaft-800 dark:text-white">{timeZone}</p>
 </div>
 
 
 <script>
-    let date: Date = new Date();
 
     setInterval((): void => {
-        date = new Date();
+        const item: Element = document.querySelector('#main-hour');
+        const date: Date = new Date(item.attributes['data-date'].value);
 
         const hour: string = date.getHours() < 10 ? `0${date.getHours()}` : `${date.getHours()}`;
         const minutes: string = date.getMinutes() < 10 ? `0${date.getMinutes()}` : `${date.getMinutes()}`;
         const seconds: string = date.getSeconds() < 10 ? `0${date.getSeconds()}` : `${date.getSeconds()}`;
         document.querySelector('#main-hour').textContent = `${hour}:${minutes}:${seconds}`;
+
+        date.setSeconds(date.getSeconds() + 1);
+        item.attributes['data-date'].value = date;
 
     }, 1000);
 
